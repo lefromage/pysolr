@@ -490,11 +490,11 @@ class Solr(object):
 
         if len(params_encoded) < 1024:
             # Typical case.
-            path = "%s/?%s" % (handler, params_encoded)
+            path = "%s?%s" % (handler, params_encoded)
             return self._send_request("get", path)
         else:
             # Handles very long queries by submitting as a POST.
-            path = "%s/" % handler
+            path = "%s" % handler
             headers = {
                 "Content-type": "application/x-www-form-urlencoded; charset=utf-8"
             }
